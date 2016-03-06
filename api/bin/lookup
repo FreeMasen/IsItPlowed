@@ -1,0 +1,41 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use lib 'lib';
+use Lookup;
+use LWP::UserAgent;
+use URI::Encode qw(uri_encode);
+use Getopt::Long;
+
+my %p;
+GetOptions(
+    'street=s' => \$p{street},
+    'street-type=s' => \$p{street_type},
+    'house-number=s' => \$p{house_number},
+    'unit=s' => \$p{unit},
+    'city=s' => \$p{city},
+    'state=s' => \$p{state},
+    'zip=s' => \$p{zip},
+);
+
+my $fields = uri_encode('outFields=OBJECTID,LONGITUDE,LATITUDE,FULL_ADDRE');
+my $format = 'f=pjson';
+my $finder = Lookup->new(
+    base_url => "https://services.arcgis.com/DqIh9WAsIZcPlBEF/arcgis/rest/services/Address_Points/FeatureServer/0/query?objectIds=&time=&geometry=&geometryType=esriGeometryPoint&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=&units=esriSRUnit_Meter&returnGeometry=true&multipatchOption=&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnDistinctValues=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&quantizationParameters=&token=&$fields&$format&",
+    map => {
+        'street' => {field => 'ST_NAME', quote => 1},
+        'street_type' => {field => 'ST_POS_TYP', quote => 1},
+        'house_number' => {field => 'ANUMBER', quote => 0},
+        'city' => {field => 'MUNI_NAME', quote => 1},
+        'state' => {field => 'STATE', quote => 1},
+        'zip' => {field => 'ZIP', quote => 0},
+    },
+);
+
+my $resp = $finder->fetch(%p);
+use Data::Dumper; warn Dumper $resp->decoded_result;
+
+print $resp->count;
+
+exit:
+################################################################################
