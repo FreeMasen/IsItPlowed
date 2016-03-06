@@ -5,11 +5,7 @@ html, body {
 input[type=submit] {
     padding-top: 5px;
 }
-.container-fluid, .navbar, .navbar-default{
-    padding: 0;
-    margin: 0;
-    border: 0px;
-}
+
 li {
     padding-right: 20px;
     padding-top: 2px;
@@ -25,4 +21,10 @@ li {
     padding: 0px;
     margin: 0px;
     border: 0;
+}
+
+#indicator {
+    color: white;
+    font-size: 24px;
+    padding-right: 5px;
 }
