@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <meta charset="UTF-8" />
+        <title>Is It Plowed?</title>
+        <link rel="stylesheet" type="text/css" href="CSS/main.css">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="bower_components/bootswatch/yeti/bootstrap.min.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="container-fluid navbar navbar-default">
+                <ul class="nav navbar-nav navbar-left" >
+                    <li class="navItem" id="addressLabel">Address: </li>
+                    <li class="textBox"><input class="form-control"></li>
+                    <li class="search"><input type="submit" value="Search" class="btn btn-success"></li>
+                </ul>
+            </div>
+            <div id="map"></div>
+        </div>
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="JS/map.js" async defer></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAp2jkbfrVm7VBV7z3ccOuNWzXgX4T1ADU&callback=initMap" async defer></script>
+    </body>
+</html>
