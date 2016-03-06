@@ -5,6 +5,7 @@
         <meta charset="UTF-8" />
         <title>Is It Plowed?</title>
         <link rel="stylesheet" type="text/css" href="CSS/main.css">
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="bower_components/bootswatch/yeti/bootstrap.min.css" />
     </head>
@@ -17,10 +18,12 @@
                     <li class="search"><input type="submit" value="Search" class="btn btn-success"></li>
                 </ul>
             </div>
-            <div id="map"></div>
         </div>
-        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="JS/map.js" async defer></script>
+        <div id="map"></div>
+        <script>
+            getLocation('found-one')
+        </script>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAp2jkbfrVm7VBV7z3ccOuNWzXgX4T1ADU&callback=initMap" async defer></script>
+        <script type="text/javascript" src="JS/map.js" async defer></script>
     </body>
 </html>
